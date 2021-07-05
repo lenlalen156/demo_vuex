@@ -12,7 +12,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'StatusBar',
-  computed:mapGetters(['doneTodos','todos','isAuthenticated'])
+  computed:mapGetters(['doneTodos','isAuthenticated'])
  
 
 
