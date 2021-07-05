@@ -4,7 +4,7 @@
     <ul>
       <li>Home</li>
       <li>About</li>
-      <li v-if="auth.isAuthenticated">Total todos: {{ todos.length}}
+      <li v-if="isAuthenticated">Total todos: {{ todos.length}}
       <button @click="loginOrLogout">Logout</button>
       </li>
       <li v-else> <button @click="loginOrLogout">Login</button></li>
@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapGetters} from 'vuex'
 
 export default {
   name:'Navbar',
-  computed: mapState(['todos','auth']),
+  computed: mapGetters(['todos','isAuthenticated']),
   // {
   //   totalTodos() {
   //     return this.$store.state.todos.length

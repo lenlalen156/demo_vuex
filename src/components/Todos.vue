@@ -1,7 +1,7 @@
 <template>
   <div class="todo-list">
     <TodoForm />
-    <ul v-if="auth.isAuthenticated">
+    <ul v-if="isAuthenticated">
       <li v-for="todo in todos" :key="todo.id" :class="todo.completed ? 'completed' : ''">
         {{todo.title}}
         <!-- <input type="checkbox" :checked="todo.completed" @change="markTodoCompleted(todo.id)"> -->
@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import { mapActions, mapMutations, mapState } from 'vuex'
+import { mapActions, mapMutations, mapGetters } from 'vuex'
 import TodoForm from './TodoForm.vue'
-// import axios from 'axios'
+
 
 
 export default {
@@ -25,13 +25,12 @@ export default {
   created(){
     this.getTodo()
   },
-  computed: mapState (
-    ['todos','auth'],
+  computed:mapGetters(['todos','isAuthenticated'])
   //   {
   //   todos: state => state.todos,
   //   isAuthenticated: state => state.auth.isAuthenticated,
   // }
-  ),
+  ,
   methods: {
     ...mapMutations (['MARK_COMPLETE']),
     // deleteTodo(todoId){
